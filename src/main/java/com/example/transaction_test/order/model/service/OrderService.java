@@ -22,18 +22,14 @@ public class OrderService {
     public void tradeTest(int userId , int buyAmt, int couponId) throws SystemException {
         Order order = Order.create(userId, buyAmt);
         orderRepository.save(order);
-        TransactionSynchronizationManager.isActualTransactionActive();
-        String currentTransactionName = TransactionSynchronizationManager.getCurrentTransactionName();
 
-//        orderRepository.callMyStoredProcedure(userId);
-        String currentTransactionName1 = TransactionSynchronizationManager.getCurrentTransactionName();
+        orderRepository.callMyStoredProcedure(userId);
 
-        if (userId == 22) {
-            throw new RuntimeException("ohh exception");
-        }
+//        if (userId == 22) {
+//            throw new RuntimeException("ohh exception");
+//        }
 
         CouponHistory couponHistory = CouponHistory.create(order.getId(), userId, couponId);
         couponRepository.save(couponHistory);
-        String currentTransactionName2 = TransactionSynchronizationManager.getCurrentTransactionName();
     }
 }

@@ -19,7 +19,7 @@ class OrderServiceTest {
     @Test
     @DisplayName("거래내역을 생성한다.")
     void createOrderHistory() throws SystemException {
-        int userId = 22;
+        int userId = 221;
         int totalAmount = 99000;
         int couponId = 44;
         orderService.tradeTest(userId, totalAmount,couponId);
